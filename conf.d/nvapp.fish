@@ -5,8 +5,5 @@ end
 
 function _fish_nvim_appname_uninstall --on-event fish_nvim_appname_uninstall
 	complete --erase nvapp
-	functions --erase nvapp
-	functions --erase _find_nvapp_names
-	functions --erase _should_complete_nvapp_name
-	functions --erase _completions_nvim_binaries
+	functions --erase nvapp _find_nvapp_names
 end

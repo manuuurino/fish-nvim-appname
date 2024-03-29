@@ -1,10 +1,3 @@
-function _find_nvapp_names
-	set --query XDG_CONFIG_HOME; set --local XDG_CONFIG_HOME $HOME/.config
-	find -L "$XDG_CONFIG_HOME" -maxdepth 2 -name "init.lua" -type f \
-		| xargs -I {} dirname {} \
-		| xargs -n 1 basename
-end
-
 function _should_complete_nvapp_name
 	set --local tokens (commandline -poc)
 	set --local position 0
