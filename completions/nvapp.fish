@@ -4,9 +4,9 @@ function _should_complete_nvapp_name
 
 	for token in $tokens
 		switch $token
-			case '--'
+			case --
 				return 1
-			case '-b' '--binary'
+			case -b --binary
 				set position (math $position - 1)
 			case '-*' '--*'
 				continue
@@ -29,7 +29,7 @@ end
 
 complete \
 	--command nvapp \
-	--condition '_should_complete_nvapp_name' \
+	--condition _should_complete_nvapp_name \
 	--no-files \
 	--arguments '(_find_nvapp_names)' \
 	--description 'Neovim config name'

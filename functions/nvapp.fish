@@ -2,7 +2,7 @@ function nvapp \
 	--description 'Wrapper function for nvim with additional functionalities' \
 	--argument-names nvapp_name
 
-	argparse --ignore-unknown 'b/binary=' 'h/help' 'c/clean' 'd/delete' -- $argv
+	argparse --ignore-unknown 'b/binary=' h/help c/clean d/delete -- $argv
 
 	if set --query _flag_help
 		echo "Usage: nvapp [-b|--binary <binary_path>] [-h|--help] [-c|--clean] [-d|--delete] <nvapp_name> ...
