@@ -33,7 +33,7 @@ After '--', all following arguments are passed directly to Neovim or the specifi
 
 	set --query XDG_CONFIG_HOME; or set --local XDG_CONFIG_HOME $HOME/.config
 
-	if set --query _flag_clean
+	if set --query _flag_clean; or set --query _flag_delete
 		set --query XDG_DATA_HOME; or set --local XDG_DATA_HOME $HOME/.local/share
 		set --query XDG_CACHE_HOME; or set --local XDG_CACHE_HOME $HOME/.cache
 		set --query XDG_STATE_HOME; or set --local XDG_STATE_HOME $HOME/.local/state
