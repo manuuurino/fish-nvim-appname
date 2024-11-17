@@ -29,6 +29,10 @@ end
 
 complete \
     --command nvapp \
+    --wraps nvim
+
+complete \
+    --command nvapp \
     --condition _should_complete_nvapp_name \
     --no-files \
     --arguments '(_find_nvapp_names)' \
@@ -43,21 +47,18 @@ complete \
 
 complete \
     --command nvapp \
-    --short-option c \
-    --long-option clean \
+    --long-option purge \
     --no-files \
     --description 'Clean installation files for <nvapp_name>'
 
 complete \
     --command nvapp \
-    --short-option d \
     --long-option delete \
     --no-files \
     --description 'Delete configuration directory for <nvapp_name>'
 
 complete \
     --command nvapp \
-    --short-option b \
     --long-option binary \
     --no-files \
     --require-parameter \

@@ -9,16 +9,17 @@ Requirements: Neovim v0.9+
 This creates a new command `nvapp` which takes an `appname` of a folder `named nvim_<appname>` in your `$XDG_CONFIG_HOME` or `$HOME/.config` and passes it into neovim using the `NVIM_APPNAME` environment variable.
 
 ```
-Usage: nvapp [-b|--binary <binary_path>] [-h|--help] [-c|--clean] [-d|--delete] <nvapp_name> ...
+Usage:
+    nvapp [-h|--help] <nvapp_name> [--binary <binary_path>] [--delete] [--purge] ...
 
 Options:
-	   -b|--binary	Specify Neovim binary to use
-	   -h|--help	Display this help text
-	   -c|--clean	Clean installation files for <nvapp_name>
-	   -d|--delete	Delete configuration directory for <nvapp_name>
-
-<nvapp_name> is required and specifies the Neovim application name.
-After '--', all following arguments are passed directly to Neovim or the specified binary.
+    -h, --help      Display this help text
+    <nvapp_name>    The name of the neovim app in $XDG_CONFIG_HOME
+                    (E.g.: ~/.config/<nvapp_name>)
+    --binary <path> Specify Neovim binary to use
+    --delete        Delete configuration directory for <nvapp_name>
+    --purge         Clean installation files for <nvapp_name>
+    ...             Any additional arguments passed to neovim
 ```
 
 ## Installation

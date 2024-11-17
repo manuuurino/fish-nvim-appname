@@ -2,19 +2,22 @@ function nvapp \
     --description 'Wrapper function for nvim with additional functionalities' \
     --argument-names nvapp_name
 
-    argparse --ignore-unknown 'b/binary=' h/help c/clean d/delete -- $argv
+    argparse --ignore-unknown 'binary=' h/help purge delete -- $argv
 
     if set --query _flag_help
-        echo "Usage: nvapp [-b|--binary <binary_path>] [-h|--help] [-c|--clean] [-d|--delete] <nvapp_name> ...
+        echo \
+            "Usage:
+    nvapp [-h|--help] <nvapp_name> [--binary <binary_path>] [--delete] [--purge] ...
 
 Options:
-	-b|--binary	Specify Neovim binary to use
-	-h|--help	Display this help text
-	-c|--clean	Clean installation files for <nvapp_name>
-	-d|--delete	Delete configuration directory for <nvapp_name>
+    -h, --help      Display this help text
+    <nvapp_name>    The name of the neovim app in $XDG_CONFIG_HOME
+                    (E.g.: ~/.config/<nvapp_name>)
+    --binary <path> Specify Neovim binary to use
+    --delete        Delete configuration directory for <nvapp_name>
+    --purge         Clean installation files for <nvapp_name>
+    ...             Any additional arguments passed to neovim"
 
-<nvapp_name> is required and specifies the Neovim application name.
-After '--', all following arguments are passed directly to Neovim or the specified binary."
         return 0
     end
 
@@ -33,7 +36,7 @@ After '--', all following arguments are passed directly to Neovim or the specifi
 
     set --query XDG_CONFIG_HOME; or set --local XDG_CONFIG_HOME $HOME/.config
 
-    if set --query _flag_clean; or set --query _flag_delete
+    if set --query _flag_purge; or set --query _flag_delete
         set --query XDG_DATA_HOME; or set --local XDG_DATA_HOME $HOME/.local/share
         set --query XDG_CACHE_HOME; or set --local XDG_CACHE_HOME $HOME/.cache
         set --query XDG_STATE_HOME; or set --local XDG_STATE_HOME $HOME/.local/state
