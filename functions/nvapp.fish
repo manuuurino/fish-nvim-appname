@@ -2,7 +2,7 @@ function nvapp \
     --description 'Wrapper function for nvim with additional functionalities' \
     --argument-names nvapp_name
 
-    argparse --ignore-unknown 'binary=' h/help purge delete -- $argv
+    argparse --ignore-unknown 'binary=' h/help purge delete -- $argv[2..-1]
 
     if set --query _flag_help
         echo \
