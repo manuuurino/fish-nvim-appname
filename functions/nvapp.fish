@@ -21,6 +21,17 @@ Options:
         return 0
     end
 
+    if set --query _flag_name
+        set nvapp_name $_flag_name
+    else
+        for arg in $argv
+            if not string match -q -- '--*' $arg
+                set nvapp_name $arg
+                break
+            end
+        end
+    end
+
     if test -z "$nvapp_name"
         echo "Error: Must specify <nvapp_name>."
         return 1
@@ -69,7 +80,13 @@ Options:
             return 0
         end
     else if test -d "$nvim_config_directory"
-        NVIM_APPNAME="$nvapp_name" $_flag_binary $argv[2..-1]
+        set --local filtered_args
+        for arg in $argv
+            if test "$arg" != "$nvapp_name"
+                set -a filtered_args $arg
+            end
+        end
+        NVIM_APPNAME="$nvapp_name" $_flag_binary $filtered_args
     else
         echo "Error: Configuration directory '$nvim_config_directory' doesn't exist."
         return 1
